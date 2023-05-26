@@ -1,0 +1,24 @@
+class Client:
+ - id number
+ - name string
+ - ag number
+ - account number
+ - BankAccount
+
+
+
+class BankAccount:
+ - deposite: number = 0;
+ - withdraw: number = 0;
+ - balance: number = 0;
+ - historic: array = [];
+ 
+ constructor
+ metodo deposite - number
+ metodo withdraw - number
+
+ function balance
+ - console.log balance
+
+ function historic
+ - console.log array historic transation
