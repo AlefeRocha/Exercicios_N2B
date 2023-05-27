@@ -25,6 +25,5 @@ class Product{
 }
 
 const product = new Product(10, 'camiseta', 20, 2);
-
-console.log(product);
-product.totalPrice();
+console.log(product); // Product { code: 10, name: 'camiseta', price: 20, quantity: 2 }
+product.totalPrice(); //O valor total do produto é de 40.
