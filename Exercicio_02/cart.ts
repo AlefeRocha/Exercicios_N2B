@@ -1,7 +1,7 @@
 export class Cart{
     cart: Product[] = [];
 
-    add(){
+    add(product: Product){
         
     }
 }
