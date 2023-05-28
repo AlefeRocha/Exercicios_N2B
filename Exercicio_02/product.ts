@@ -42,12 +42,14 @@ class Cart{
         //     console.log(`Estamos no ${index}.`);
         //     this.cart.splice(index, 1);
         //     index = this.cart.indexOf(product);  //aqui vai receber o index do produto3, mas de outra posição
-        //     console.log(index)
+        //     console.log(index);
         // }
 
         let index = this.cart.indexOf(product);
         if(index > -1){
             this.cart.splice(index, 1);
+        } else{
+            console.log('Item não econtrado!')
         }
     }
 
@@ -75,7 +77,7 @@ carrinho.add(product1);
 carrinho.add(product2);
 carrinho.add(product3);
 carrinho.add(product3);
-carrinho.remove(product3)
+carrinho.remove(product3);
 carrinho.add(product4);
 console.log(carrinho.total());
 
