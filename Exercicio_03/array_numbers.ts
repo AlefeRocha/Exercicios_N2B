@@ -11,5 +11,5 @@ function arrayNumbers(array: number[] = []){
     console.log(array);
 }
 
-// arrayNumbers([10, 3, 5, 4.5, 8, 34, 45, 112, 1, 0.4]);
 arrayNumbers([3, 6, 9, 1, 2, 2, 4, 7, 10, 5]);
+// result = [ 1, 2, 2, 3, 4, 5, 6, 7, 9, 10];
