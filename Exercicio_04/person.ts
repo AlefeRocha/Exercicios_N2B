@@ -16,25 +16,13 @@ class Person{
     getFriends(){
         // return this.friendList.sort((a, b) => b.age - a.age);
 
-        // if(this.friendList.length !== -1){
-        //     this.friendList.sort((a: Person, b: Person) => {
-        //         return b.age - a.age;
-        //     });
-        // } else {
-        //     console.log('Lista de amigos está vazia.');
-        // }
-        
-        //return this.friendList;
-
-        if(this.friendList.length !== -1){
+        if(this.friendList.length !== 0){
             return this.friendList.sort((a, b) => b.age - a.age);
         } else {
-            return console.log('Lista de amigos está vazia.');
+            return 'Lista de amigos está vazia.';
         }
     }
 }
-
-
 
 let pessoa1 = new Person('Alefe', 31);
 let pessoa2 = new Person('Maria', 28);
@@ -46,11 +34,17 @@ pessoa1.addFriend(pessoa2);
 pessoa1.addFriend(pessoa3);
 pessoa1.addFriend(pessoa4);
 pessoa1.addFriend(pessoa5);
-// pessoa2.addFriend(pessoa1);
-// pessoa2.addFriend(pessoa3);
 
-// console.log(pessoa1.friendList);
-// console.log(pessoa2.friendList);
-// console.log(pessoa3.friendList);
 console.log(pessoa1.getFriends());
 console.log(pessoa2.getFriends());
+
+// result console.log(pessoa1.getFriends());
+// [
+// Person { name: 'Marcos', age: 42, friendList: [] },
+// Person { name: 'Marcos', age: 30, friendList: [] },
+// Person { name: 'Maria', age: 28, friendList: [] }, 
+// Person { name: 'Stella', age: 26, friendList: [] }
+// ]
+
+// result console.log(pessoa2.getFriends());
+// Lista de amigos está vazia.
