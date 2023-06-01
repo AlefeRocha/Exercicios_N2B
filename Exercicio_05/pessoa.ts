@@ -35,3 +35,12 @@ class Client extends Person{
 const clienteJoao = new Client('João', 30, 'joao@gmail.com', 2525, new Date('2023-05-30'));
 
 console.log(clienteJoao.dataClient);
+
+// result:
+// {
+//     name: 'João',
+//     age: 30,
+//     email: 'joao@gmail.com',
+//     clientID: 2525,
+//     registrationDate: 2023-05-30T00:00:00.000Z
+//   }
