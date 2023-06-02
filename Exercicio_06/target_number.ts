@@ -4,9 +4,10 @@ function arrayNumbers(randomArray: Array<number>, targetNumber: number){
 
     for(let i = 0; i < randomArray.length; i++){
         const num = targetNumber - randomArray[i];
-        const index1 = randomArray.indexOf(i);
-        console.log(index1);
-        //console.log(randomArray[i])
+        const index = randomArray.indexOf(i);
+        console.log(index);
+        console.log(num);
+        
         if(randomArray.includes(num) === true){
             //const index1: number = randomArray.indexOf(i);
             //index1, randomArray.indexOf(num);
