@@ -11,8 +11,9 @@ function arrayNumbers(randomArray: Array<number>, targetNumber: number){
     }
     return []
 }
+
 // array que quebrava a solução 👇
-console.log(arrayNumbers([5, 5, 8, 130, 44], 10));
-console.log(arrayNumbers([5, 6, 8, 130, 44], 11));
-console.log(arrayNumbers([5, 12, 8, 130, 44], 52));
-console.log(arrayNumbers([5, 12, 8, 130, 44, 20, 200, 34, 21, 63, 16, 89, 1, 9, 90, 99, 30, 420, 80, 57], 100));
+console.log(arrayNumbers([5, 5, 8, 130, 44], 10)); // [0, 1]
+console.log(arrayNumbers([5, 6, 8, 130, 44], 11)); // [0, 1]
+console.log(arrayNumbers([5, 12, 8, 130, 44], 52)); // [2, 4]
+console.log(arrayNumbers([5, 12, 8, 130, 44, 20, 200, 34, 21, 63, 89, 1, 9, 420, 80, 57], 100)); // [5, 14]
