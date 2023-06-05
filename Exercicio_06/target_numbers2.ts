@@ -15,3 +15,4 @@ function arrayNumbers(randomArray: Array<number>, targetNumber: number){
 console.log(arrayNumbers([5, 5, 8, 130, 44], 10));
 console.log(arrayNumbers([5, 6, 8, 130, 44], 11));
 console.log(arrayNumbers([5, 12, 8, 130, 44], 52));
+console.log(arrayNumbers([5, 12, 8, 130, 44, 20, 200, 34, 21, 63, 16, 89, 1, 9, 90, 99, 30, 420, 80, 57], 100));
