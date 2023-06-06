@@ -34,7 +34,6 @@ class Cart{
     //     }
     //     return totalCart;
     // }
-
 }
 
 
