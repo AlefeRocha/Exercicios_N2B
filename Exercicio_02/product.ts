@@ -9,7 +9,7 @@ class Product{
 }
 
 class Cart{
-    cart: [{Product; number}];
+    cart: [{product: Product; quantity: number}];
 
     add(product: Product, quantity: number){
         this.cart.push({product, quantity});
