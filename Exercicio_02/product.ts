@@ -1,31 +1,22 @@
 class Product{
-    code: number;
-    name: string;
-    price: number;
-    quantity: number;
 
-    constructor(code: number, name: string, price: number, quantity: number){
-        this.code = code;
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
+    constructor(private code: number, private name: string, private price: number){
     }
 
-    totalPrice(): number {
-        // const total = this.price * this.quantity
-        // console.log(`O valor total do produto é de ${total}.`);
-        return this.price * this.quantity;
-      }
+    // totalPrice(): number {
+    //     return this.price * this.quantity;
+    //   }
 }
 
-class Cart{
+class Cart extends Product{
     cart: Product[] = [];
+    quantity: number;
 
-    add(product: Product){
+    add(product: Product, quantity: number){
         this.cart.push(product);
     }
 
-    remove(product: Product){
+    remove(code: number){
         // para remover todos os produtos iguais do array
 
         // for (let i = 0; i < this.cart.length; i++){
