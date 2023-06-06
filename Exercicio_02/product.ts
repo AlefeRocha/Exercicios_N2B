@@ -8,13 +8,8 @@ class Product{
     //   }
 }
 
-class Cart extends Product{
-    cart: Product[] = [];
-
-    // constructor(){
-    //     super(code, name, price);
-    // }
-
+class Cart{
+    cart: [Product, number];
 
     add(product: Product, quantity: number){
         this.cart.push([product, quantity]);
@@ -43,8 +38,10 @@ class Cart extends Product{
 }
 
 
-// const carrinho = new Cart()
-// const product1 = new Product(10, 'camiseta', 20, 2);
+const carrinho = new Cart()
+const product1 = new Product(10, 'camiseta', 20);
+carrinho.add(product1, 2);
+console.log(carrinho);
 // const product2 = new Product(102, 'calça', 10, 2);
 // const product3 = new Product(24, 'bermuda', 50, 5);
 // const product4 = new Product(39, 'bermuda', 10, 5);
