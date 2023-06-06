@@ -9,10 +9,10 @@ class Product{
 }
 
 class Cart{
-    cart: [Product, number];
+    cart: [{Product; number}];
 
     add(product: Product, quantity: number){
-        this.cart.push([product, quantity]);
+        this.cart.push({product, quantity});
     }
 
     // remove(code: Product, quantity){
