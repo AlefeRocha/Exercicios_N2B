@@ -1,6 +1,8 @@
 class Product{
-
+    code: number;
+    
     constructor(code: number, name: string, price: number){
+        this.code = code;
     }
 
     // totalPrice(): number {
@@ -11,13 +13,12 @@ class Product{
 class Cart{
     cart: {product: Product; quantity: number}[] = [];
     
-
-    add(product: Product, quantity: number){
+    add(product: Product, quantity: number): void{
         this.cart.push({product, quantity});
     }
 
-    // remove(code: Product, quantity){
-    //     let index = this.cart.indexOf(product);
+    // remove(code: number, quantity: number): void{
+    //     let index = this.cart.filter(item => item.product.code == code);
     //     if(index > -1){
     //         this.cart.splice(index, 1);
     //     } else{
@@ -38,12 +39,12 @@ class Cart{
 }
 
 
-const carrinho = new Cart()
+const cart = new Cart()
 const product1 = new Product(10, 'camiseta', 20);
 const product2 = new Product(15, 'camiseta', 10);
-carrinho.add(product1, 2);
-carrinho.add(product2, 3);
-console.log(carrinho);
+cart.add(product1, 2);
+cart.add(product2, 3);
+console.log(cart);
 // const product2 = new Product(102, 'calça', 10, 2);
 // const product3 = new Product(24, 'bermuda', 50, 5);
 // const product4 = new Product(39, 'bermuda', 10, 5);
@@ -56,6 +57,10 @@ console.log(carrinho);
 // carrinho.add(product4);
 // console.log(carrinho.total());
 
+// console.log({
+//     code:101,
+//     name: 'camiseta'
+// })
 
 // carrinho.total();
 // carrinho.add(product1);
