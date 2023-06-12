@@ -21,6 +21,9 @@ class Cart{
     remove(code: number, quantity: number): void{
         if (this.cart.has(code)){
             if(quantity != null){
+                let productQuantity:number = this.cart.get(code);
+                let newQuantity: number = quantity - productQuantity;
+                this.cart.set(code, newQuantity);
                 for(let i = 0; i < quantity; i++){
                     this.cart.delete(code);
                 }
