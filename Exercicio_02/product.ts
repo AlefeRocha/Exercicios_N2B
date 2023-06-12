@@ -20,8 +20,28 @@ class Cart{
 
     remove(code: number, quantity: number): void{
         if (this.cart.has(code)){
+            if(quantity != null){
+                for(let i = 0; i < quantity; i++){
+                    
+                }
+                
+            }
 
         }
+
+        // remove(code: string, quantity?: number): void {
+        //     if (this.items.has(code)) {
+        //       if (quantity) {
+        //         const existingItem = this.items.get(code)!;
+        //         existingItem.quantity -= quantity;
+        //         if (existingItem.quantity <= 0) {
+        //           this.items.delete(code);
+        //         }
+        //       } else {
+        //         this.items.delete(code);
+        //       }
+        //     }
+        //   }
         // this.cart.get(item => item.product.code == code);
         // if(index > -1){
         //     this.cart.splice(index, 1);
