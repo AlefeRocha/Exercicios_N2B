@@ -22,36 +22,32 @@ class Cart{
         if (this.cart.has(code)){
             if(quantity != null){
                 for(let i = 0; i < quantity; i++){
-
+                    this.cart.delete(code);
                 }
-                
-            }
-
+            } else {
+                this.cart.delete(code)
+            }  
         }
-
-        // this.cart.get(item => item.product.code == code);
-        // if(index > -1){
-        //     this.cart.splice(index, 1);
-        // } else{
-        //     console.log('Item não econtrado!')
-        // }
     }
-
+    
     total(): void{
         console.log(this.cart)
     }
 }
 
 
+
 const cart = new Cart()
-const product1 = new Product(10, 'Camiseta', 20);
-const product2 = new Product(15, 'Blusa', 10);
+const product1 = new Product(150, 'Camiseta', 20);
+const product2 = new Product(200, 'Blusa', 10);
 // const product3 = new Product(24, 'Bermuda', 50, 5);
 // const product4 = new Product(39, 'Calça', 10, 5);
 
 
-cart.add(product1, 2);
-cart.add(product2, 3);
+cart.add(product1, 5);
+cart.add(product2, 10);
+console.log(cart);
+cart.remove(200, 2)
 console.log(cart);
 
 // console.log({
