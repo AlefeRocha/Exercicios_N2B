@@ -19,7 +19,10 @@ class Cart{
     }
 
     remove(code: number, quantity: number): void{
-        let index = this.cart.get(item => item.product.code == code);
+        if (this.cart.has(code)){
+
+        }
+        // this.cart.get(item => item.product.code == code);
         // if(index > -1){
         //     this.cart.splice(index, 1);
         // } else{
