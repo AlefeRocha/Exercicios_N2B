@@ -40,10 +40,10 @@ class Cart{
     
     total(): void{
         let totalCart = 0;
-        for(let items of this.cart.entries()){
-            
+        for(let [code, quantity] of this.cart){
+            console.log(`Código ${code} e quantidade ${quantity}`)
         }
-        console.log(this.cart)
+        // console.log(this.cart)
     }
 }
 
@@ -61,6 +61,7 @@ cart.add(product2, 10);
 console.log(cart);
 cart.remove(200, 2);
 console.log(cart);
+cart.total();
 
 // console.log({
 //     code:101,
