@@ -41,14 +41,18 @@ class Cart{
     total(): void{
         let totalCart = 0;
         for(let [code, quantity] of this.cart){
-            console.log(`Código ${code} e quantidade ${quantity}`)
+            let totalPrice = this.cart.get(code)!;
+            console.log(this.cart.get(code));
+            totalCart += totalPrice * quantity;
         }
+        console.log(`O valor total do carrinho é: R$${totalCart}.`);
         // console.log(this.cart)
     }
 }
 
 
 
+// instanciando
 const cart = new Cart()
 const product1 = new Product(150, 'Camiseta', 20);
 const product2 = new Product(200, 'Blusa', 10);
@@ -56,12 +60,16 @@ const product2 = new Product(200, 'Blusa', 10);
 // const product4 = new Product(39, 'Calça', 10, 5);
 
 
+// Adicionando no carrinho
 cart.add(product1, 5);
 cart.add(product2, 10);
-console.log(cart);
-cart.remove(200, 2);
+// cart.remove(200, 2);
 console.log(cart);
 cart.total();
+
+
+
+
 
 // console.log({
 //     code:101,
