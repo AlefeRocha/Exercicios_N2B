@@ -33,8 +33,16 @@ class Cart{
             console.log('Código não encontrado!')
         }   
     }
+
+    // totalPrice(product: Product){
+    //     console.log(this.cart.)
+    // }
     
     total(): void{
+        let totalCart = 0;
+        for(let items of this.cart.entries()){
+            
+        }
         console.log(this.cart)
     }
 }
