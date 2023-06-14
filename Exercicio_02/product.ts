@@ -8,52 +8,52 @@ class Product{
         }
 }
 
-// function getPrice(code: number): number{
-//     let productPrice = this.items.get(code.price);
-//     return productPrice;
-// }
+interface Item{
+    product: Product
+    quantity: number
+}
 
 class Cart{
-    items = new Map<number, number>();
+    items = new Map<number, Item>();
     
     add(product: Product, quantity: number): void{
         let added = this.items.get(product.code)
-        console.log(typeof added);
         if(added){
-            this.items.set(product.code, added + quantity)
+            added.quantity += quantity
             return
         }
-        this.items.set(product.code, quantity)
+        this.items.set(product.code, {'product': product, 'quantity': quantity})
+        //console.log(this.items)
     }
 
-    remove(code: number, quantity?: number): void{
-        if (this.items.has(code)){
-            let productQuantity: number = this.items.get(code)!; // recebe o valor da chave(a quantidade no carrinho) 'code'
-            if(quantity! < 0){ // valido se é um número negativo
-                console.log('Por favor, passar uma quantidade válida.')
-                } if(quantity! < productQuantity && quantity! > 0){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
-                    let newQuantity: number = productQuantity - quantity!;
-                    this.items.set(code, newQuantity);
-                } else {
-                    this.items.delete(code)
-                }
-        } else {
-            console.log('Código não encontrado!')
-        }   
-    }
+    // remove(code: number, quantity?: number): void{
+    //     if (this.items.has(code)){
+    //         let productQuantity: number = this.items.get(code)!; // recebe o valor da chave(a quantidade no carrinho) 'code'
+    //         if(quantity! < 0){ // valido se é um número negativo
+    //             console.log('Por favor, passar uma quantidade válida.')
+    //             } if(quantity! < productQuantity && quantity! > 0){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
+    //                 let newQuantity: number = productQuantity - quantity!;
+    //                 this.items.set(code, newQuantity);
+    //             } else {
+    //                 this.items.delete(code)
+    //             }
+    //     } else {
+    //         console.log('Código não encontrado!')
+    //     }   
+    // }
     
-    total(): void{
-        let totalCart = 0;
-        for(let [code, quantity] of this.items){
-            let totalPrice = code;
+    // total(): void{
+    //     let totalCart = 0;
+    //     for(let [code, quantity] of this.items){
+    //         let totalPrice = code;
 
-            console.log(code);
-            console.log(quantity);
-            totalCart += totalPrice * quantity;
-        }
-        console.log(`O valor total do carrinho é: R$${totalCart}.`);
-        // console.log(this.items)
-    }
+    //         console.log(code);
+    //         console.log(quantity);
+    //         totalCart += totalPrice * quantity;
+    //     }
+    //     console.log(`O valor total do carrinho é: R$${totalCart}.`);
+    //     // console.log(this.items)
+    // }
 }
 
 
@@ -68,10 +68,12 @@ const product2 = new Product(222, 'Blusa', 10);
 
 // Adicionando no carrinho
 cart.add(product1, 5);
-cart.add(product2, 10);
+cart.add(product1, 5);
+cart.add(product2, 2);
 // cart.remove(200, 2);
+console.log(cart.items);
 console.log(cart);
-cart.total();
+// cart.total();
 
 
 
