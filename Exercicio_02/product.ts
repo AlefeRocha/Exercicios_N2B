@@ -17,6 +17,7 @@ class Cart{
     items = new Map<number, Item>();
     
     add(product: Product, quantity: number): void{
+        let c = this.items.get(2);
         let added = this.items.get(product.code)
         if(added){
             console.log(added);
@@ -28,16 +29,18 @@ class Cart{
     }
 
     remove(code: number, quantity: number): void{
-        if (this.items.has(code)){
-            let productQuantity: number = this.items.get(); // recebe o valor da chave(a quantidade no carrinho) 'code'
-            if(quantity < 0){ // valido se é um número negativo
+        let productQuantity = this.items.get(code);
+        // let newQuantity;
+
+        if (this.items.has(code)){ // recebe o valor da chave(a quantidade no carrinho) 'code'
+            if(quantity <= 0){ // valido se é um número negativo
                 console.log('Por favor, passar uma quantidade válida.')
-                } if(quantity < productQuantity && quantity > 0){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
-                    let newQuantity: number = productQuantity - quantity;
-                    this.items.set(code, newQuantity);
-                } else {
-                    this.items.delete(code)
-                }
+            } if(quantity < productQuantity?.quantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
+                let newQuantity = productQuantity?.quantity! - quantity;
+                this.items.set(code, newQuantity);
+            } else {
+                this.items.delete(code)
+            }
         } else {
             console.log('Código não encontrado!')
         }   
@@ -71,7 +74,7 @@ const product2 = new Product(222, 'Blusa', 10);
 cart.add(product1, 5);
 cart.add(product1, 5);
 cart.add(product2, 2);
-// cart.remove(200, 2);
+cart.remove(200, 2);
 console.log(cart.items);
 console.log(cart);
 // cart.total();
