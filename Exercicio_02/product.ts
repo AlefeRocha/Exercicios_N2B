@@ -19,6 +19,7 @@ class Cart{
     add(product: Product, quantity: number): void{
         let added = this.items.get(product.code)
         if(added){
+            console.log(added);
             added.quantity += quantity
             return
         }
@@ -28,7 +29,7 @@ class Cart{
 
     remove(code: number, quantity: number): void{
         if (this.items.has(code)){
-            let productQuantity: number = this.items.get(code); // recebe o valor da chave(a quantidade no carrinho) 'code'
+            let productQuantity: number = this.items.get(); // recebe o valor da chave(a quantidade no carrinho) 'code'
             if(quantity < 0){ // valido se é um número negativo
                 console.log('Por favor, passar uma quantidade válida.')
                 } if(quantity < productQuantity && quantity > 0){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
