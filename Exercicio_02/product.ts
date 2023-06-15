@@ -26,21 +26,21 @@ class Cart{
         //console.log(this.items)
     }
 
-    // remove(code: number, quantity?: number): void{
-    //     if (this.items.has(code)){
-    //         let productQuantity: number = this.items.get(code)!; // recebe o valor da chave(a quantidade no carrinho) 'code'
-    //         if(quantity! < 0){ // valido se é um número negativo
-    //             console.log('Por favor, passar uma quantidade válida.')
-    //             } if(quantity! < productQuantity && quantity! > 0){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
-    //                 let newQuantity: number = productQuantity - quantity!;
-    //                 this.items.set(code, newQuantity);
-    //             } else {
-    //                 this.items.delete(code)
-    //             }
-    //     } else {
-    //         console.log('Código não encontrado!')
-    //     }   
-    // }
+    remove(code: number, quantity: number): void{
+        if (this.items.has(code)){
+            let productQuantity: number = this.items.get(code); // recebe o valor da chave(a quantidade no carrinho) 'code'
+            if(quantity < 0){ // valido se é um número negativo
+                console.log('Por favor, passar uma quantidade válida.')
+                } if(quantity < productQuantity && quantity > 0){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
+                    let newQuantity: number = productQuantity - quantity;
+                    this.items.set(code, newQuantity);
+                } else {
+                    this.items.delete(code)
+                }
+        } else {
+            console.log('Código não encontrado!')
+        }   
+    }
     
     // total(): void{
     //     let totalCart = 0;
