@@ -80,11 +80,15 @@ class Cart{
         let totalPrice: number = 0;
         let totalCart: number = 0;
 
-        for(let [code, product] of this.items){
-            totalPrice = product.product.price * product.quantity;
+        for(let [code, products] of this.items){
+            totalPrice = products.product.price * products.quantity;
             totalCart += totalPrice;
         }
         console.log(`O valor total do carrinho é: R$${totalCart}.`);
+    }
+
+    summary(){
+        
     }
 }
 
