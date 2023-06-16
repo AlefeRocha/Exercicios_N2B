@@ -20,12 +20,10 @@ class Cart{
         let c = this.items.get(2);
         let added = this.items.get(product.code)
         if(added){
-            console.log(added);
             added.quantity += quantity
             return
         }
         this.items.set(product.code, {'product': product, 'quantity': quantity})
-        //console.log(this.items)
     }
 
     // remove(code: number, quantity: number): void{
@@ -55,9 +53,8 @@ class Cart{
             if(quantity <= 0){ // valido se é um número negativo
                 console.log('Por favor, passar uma quantidade válida.')
             } if(quantity <= productQuantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
-                // let newQuantity = productQuantity?.quantity! - quantity;
                 productQuantity! -= quantity;
-                this.items.set(code, productQuantity);
+                this.items.set(code, {'product': product, 'quantity': productQuantity});
             } else {
                 this.items.delete(code)
             }
@@ -93,12 +90,10 @@ const product2 = new Product(222, 'Blusa', 10);
 // Adicionando no carrinho
 cart.add(product1, 5);
 cart.add(product1, 5);
-cart.add(product2, 2);
-cart.remove(200, 2);
+cart.add(product2, 8);
+cart.remove(222, 2);
 console.log(cart.items);
 console.log(cart);
-// cart.total();
-
 
 
 // console.log({
