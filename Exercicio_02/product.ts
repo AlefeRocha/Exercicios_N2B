@@ -76,14 +76,15 @@ class Cart{
             console.log('Carrinho vazio')
             return
         }
-        let totalCart = 0;
+
+        let totalPrice: number = 0;
+        let totalCart: number = 0;
+
         for(let [code, product] of this.items){
-            let totalPrice = code;
-            let totalProduct += product.price;
-            //totalCart += totalPrice * quantity;
+            totalPrice = product.product.price * product.quantity;
+            totalCart += totalPrice;
         }
-        // console.log(`O valor total do carrinho é: R$${totalCart}.`);
-        // // console.log(this.items)
+        console.log(`O valor total do carrinho é: R$${totalCart}.`);
     }
 }
 
@@ -101,7 +102,7 @@ const product2 = new Product(222, 'Blusa', 10);
 cart.add(product1, 5);
 cart.add(product1, 5);
 cart.add(product2, 8);
-// cart.remove(222, 2);
+cart.remove(222, 2);
 // console.log(cart.items);
 // console.log(cart);
 cart.total();
