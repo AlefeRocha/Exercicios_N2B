@@ -87,8 +87,31 @@ class Cart{
         console.log(`O valor total do carrinho é: R$${totalCart}.`);
     }
 
-    summary(){
-        
+    // summary() {
+    //     const summaryItems = this.items.forEach((item) => ({
+    //         code: item.product.code,
+    //         quantity: item.quantity,
+    //         total: item.product.price * item.quantity
+    //     }));
+    //     return JSON.stringify(summaryItems);
+    //   }
+
+    summary() {
+        let code;
+        let quantity;
+        let total;
+
+        for(let [_, item] of this.items){
+            code = item.product.code;
+            quantity = item.quantity;
+            total = item.product.price * item.quantity
+        }
+        const summaryItems = {
+            code: code,
+            quantity: quantity,
+            total: total
+        }
+        return JSON.stringify(summaryItems);
     }
 }
 
@@ -110,6 +133,7 @@ cart.remove(222, 2);
 // console.log(cart.items);
 // console.log(cart);
 cart.total();
+console.log(cart.summary());
 
 
 // console.log({
