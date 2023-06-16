@@ -45,7 +45,7 @@ class Cart{
     //     }   
     // }
 
-    // Refatorado
+    // Remove refatorado
     remove(code: number, quantity: number): void{
         if (!this.items.has(code)){ // recebe o valor da chave(a quantidade no carrinho) 'code'
             console.log('Código não encontrado!')
@@ -62,7 +62,7 @@ class Cart{
         } if(quantity === productQuantity!){ // valido se a quantidade passada é igual a quantidade que já está no carrinho, se sim, exclui do carrinho
             this.items.delete(code)
             return
-        } if(quantity < productQuantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
+        } if(quantity < productQuantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho
             productQuantity! -= quantity;
             this.items.set(code, {'product': product, 'quantity': productQuantity});
             return
@@ -71,18 +71,20 @@ class Cart{
         }   
     }
     
-    // total(): void{
-    //     let totalCart = 0;
-    //     for(let [code, quantity] of this.items){
-    //         let totalPrice = code;
-
-    //         console.log(code);
-    //         console.log(quantity);
-    //         totalCart += totalPrice * quantity;
-    //     }
-    //     console.log(`O valor total do carrinho é: R$${totalCart}.`);
-    //     // console.log(this.items)
-    // }
+    total(): void{
+        if (!this.items.size){
+            console.log('Carrinho vazio')
+            return
+        }
+        let totalCart = 0;
+        for(let [code, product] of this.items){
+            let totalPrice = code;
+            let totalProduct += product.price;
+            //totalCart += totalPrice * quantity;
+        }
+        // console.log(`O valor total do carrinho é: R$${totalCart}.`);
+        // // console.log(this.items)
+    }
 }
 
 
@@ -99,9 +101,10 @@ const product2 = new Product(222, 'Blusa', 10);
 cart.add(product1, 5);
 cart.add(product1, 5);
 cart.add(product2, 8);
-cart.remove(222, 2);
-console.log(cart.items);
-console.log(cart);
+// cart.remove(222, 2);
+// console.log(cart.items);
+// console.log(cart);
+cart.total();
 
 
 // console.log({
