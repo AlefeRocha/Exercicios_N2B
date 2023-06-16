@@ -27,15 +27,16 @@ class Cart{
     }
 
     // remove(code: number, quantity: number): void{
-    //     let productQuantity = this.items.get(code);
-    //     // let newQuantity;
+    //     let item = this.items.get(code);
+    //     let productQuantity = item?.quantity!;
+    //     let product = item?.product!;
 
     //     if (this.items.has(code)){ // recebe o valor da chave(a quantidade no carrinho) 'code'
     //         if(quantity <= 0){ // valido se é um número negativo
     //             console.log('Por favor, passar uma quantidade válida.')
-    //         } if(quantity < productQuantity?.quantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
-    //             let newQuantity = productQuantity?.quantity! - quantity;
-    //             this.items.set(code, newQuantity);
+    //         } if(quantity <= productQuantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
+    //             productQuantity! -= quantity;
+    //             this.items.set(code, {'product': product, 'quantity': productQuantity});
     //         } else {
     //             this.items.delete(code)
     //         }
@@ -43,23 +44,30 @@ class Cart{
     //         console.log('Código não encontrado!')
     //     }   
     // }
-    
+
+    // Refatorado
     remove(code: number, quantity: number): void{
+        if (!this.items.has(code)){ // recebe o valor da chave(a quantidade no carrinho) 'code'
+            console.log('Código não encontrado!')
+            return
+        } 
+        
         let item = this.items.get(code);
         let productQuantity = item?.quantity!;
         let product = item?.product!;
 
-        if (this.items.has(code)){ // recebe o valor da chave(a quantidade no carrinho) 'code'
-            if(quantity <= 0){ // valido se é um número negativo
-                console.log('Por favor, passar uma quantidade válida.')
-            } if(quantity <= productQuantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
-                productQuantity! -= quantity;
-                this.items.set(code, {'product': product, 'quantity': productQuantity});
-            } else {
-                this.items.delete(code)
-            }
+        if(quantity <= 0){ // valido se é um número negativo
+            console.log('Por favor, passar uma quantidade válida.')
+            return
+        } if(quantity === productQuantity!){ // valido se a quantidade passada é igual a quantidade que já está no carrinho, se sim, exclui do carrinho
+            this.items.delete(code)
+            return
+        } if(quantity < productQuantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
+            productQuantity! -= quantity;
+            this.items.set(code, {'product': product, 'quantity': productQuantity});
+            return
         } else {
-            console.log('Código não encontrado!')
+            this.items.delete(code)
         }   
     }
     
