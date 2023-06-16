@@ -139,13 +139,10 @@ cart.add(product1, 5);
 cart.add(product1, 5);
 cart.add(product2, 8);
 cart.remove(222, 2);
-// console.log(cart.items);
-// console.log(cart);
 cart.total();
 console.log(cart.summary());
 
 
-// console.log({
-//     code: 101,
-//     name: 'camiseta'
-// })
+// Resultado
+// O valor total do carrinho é: R$260.
+// [{"code":111,"quantity":10,"total":200},{"code":222,"quantity":6,"total":60}]
