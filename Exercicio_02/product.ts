@@ -96,21 +96,30 @@ class Cart{
     //     return JSON.stringify(summaryItems);
     //   }
 
-    summary() {
-        let code;
-        let quantity;
-        let total;
+    // summary() {
+    //     let code;
+    //     let quantity;
+    //     let total;
 
-        for(let [_, item] of this.items){
-            code = item.product.code;
-            quantity = item.quantity;
-            total = item.product.price * item.quantity
-        }
-        const summaryItems = {
-            code: code,
-            quantity: quantity,
-            total: total
-        }
+    //     for(let [_, item] of this.items){
+    //         code = item.product.code;
+    //         quantity = item.quantity;
+    //         total = item.product.price * item.quantity
+    //     }
+    //     const summaryItems = {
+    //         code: code,
+    //         quantity: quantity,
+    //         total: total
+    //     }
+    //     return JSON.stringify(summaryItems);
+    // }
+
+        summary() {
+        const summaryItems = Array.from(this.items, ([_, item]) => ({
+            code: item.product.code,
+            quantity: item.quantity,
+            total: item.product.price * item.quantity,
+        }));
         return JSON.stringify(summaryItems);
     }
 }
