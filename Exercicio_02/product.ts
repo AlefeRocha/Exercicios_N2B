@@ -28,16 +28,36 @@ class Cart{
         //console.log(this.items)
     }
 
+    // remove(code: number, quantity: number): void{
+    //     let productQuantity = this.items.get(code);
+    //     // let newQuantity;
+
+    //     if (this.items.has(code)){ // recebe o valor da chave(a quantidade no carrinho) 'code'
+    //         if(quantity <= 0){ // valido se é um número negativo
+    //             console.log('Por favor, passar uma quantidade válida.')
+    //         } if(quantity < productQuantity?.quantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
+    //             let newQuantity = productQuantity?.quantity! - quantity;
+    //             this.items.set(code, newQuantity);
+    //         } else {
+    //             this.items.delete(code)
+    //         }
+    //     } else {
+    //         console.log('Código não encontrado!')
+    //     }   
+    // }
+    
     remove(code: number, quantity: number): void{
-        let productQuantity = this.items.get(code);
-        // let newQuantity;
+        let item = this.items.get(code);
+        let productQuantity = item?.quantity!;
+        let product = item?.product!;
 
         if (this.items.has(code)){ // recebe o valor da chave(a quantidade no carrinho) 'code'
             if(quantity <= 0){ // valido se é um número negativo
                 console.log('Por favor, passar uma quantidade válida.')
-            } if(quantity < productQuantity?.quantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
-                let newQuantity = productQuantity?.quantity! - quantity;
-                this.items.set(code, newQuantity);
+            } if(quantity <= productQuantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
+                // let newQuantity = productQuantity?.quantity! - quantity;
+                productQuantity! -= quantity;
+                this.items.set(code, productQuantity);
             } else {
                 this.items.delete(code)
             }
