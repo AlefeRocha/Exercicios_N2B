@@ -1,98 +1,147 @@
 class Product{
     code: number;
-    name: string;
     price: number;
-    quantity: number;
-
-    constructor(code: number, name: string, price: number, quantity: number){
+    
+    constructor(code: number, name: string, price: number){
         this.code = code;
-        this.name = name;
         this.price = price;
-        this.quantity = quantity;
-    }
+        }
+}
 
-    totalPrice(): number {
-        // const total = this.price * this.quantity
-        // console.log(`O valor total do produto é de ${total}.`);
-        return this.price * this.quantity;
-      }
+interface Item{
+    product: Product
+    quantity: number
 }
 
 class Cart{
-    cart: Product[] = [];
-
-    add(product: Product){
-        this.cart.push(product);
-    }
-
-    remove(product: Product){
-        // para remover todos os produtos iguais do array
-
-        // for (let i = 0; i < this.cart.length; i++){
-        //     console.log(`Estamos no index ${i}`);
-        //     if(product === this.cart[i]){
-        //         this.cart.splice(i, 1);
-        //         console.log(`o valor do index a ser removido é ${i}`);
-        //         i = i - 1;
-        //     }
-        // }
-
-        // let index = this.cart.indexOf(product);  //vai receber o index do produto3
-        // while(index !== -1){  //-1 porque se não for achado no array, o indexOf retorna -1
-        //     console.log(`Estamos no ${index}.`);
-        //     this.cart.splice(index, 1);
-        //     index = this.cart.indexOf(product);  //aqui vai receber o index do produto3, mas de outra posição
-        //     console.log(index);
-        // }
-
-        let index = this.cart.indexOf(product);
-        if(index > -1){
-            this.cart.splice(index, 1);
-        } else{
-            console.log('Item não econtrado!')
+    items = new Map<number, Item>();
+    
+    add(product: Product, quantity: number): void{
+        let added = this.items.get(product.code)
+        if(added){
+            added.quantity += quantity
+            return
         }
+        this.items.set(product.code, {'product': product, 'quantity': quantity})
     }
 
-    total(): number{
-        let totalCart = 0;
-        // como funciona
-        // TotalCart = product1(40)
-        // TotalCart = product1(40) + product2(20) = 60
-        for(const products of this.cart){
-            totalCart += products.totalPrice();
+    // remove(code: number, quantity: number): void{
+    //     let item = this.items.get(code);
+    //     let productQuantity = item?.quantity!;
+    //     let product = item?.product!;
+
+    //     if (this.items.has(code)){ // recebe o valor da chave(a quantidade no carrinho) 'code'
+    //         if(quantity <= 0){ // valido se é um número negativo
+    //             console.log('Por favor, passar uma quantidade válida.')
+    //         } if(quantity <= productQuantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho e se é maior que 0
+    //             productQuantity! -= quantity;
+    //             this.items.set(code, {'product': product, 'quantity': productQuantity});
+    //         } else {
+    //             this.items.delete(code)
+    //         }
+    //     } else {
+    //         console.log('Código não encontrado!')
+    //     }   
+    // }
+
+    // Remove refatorado
+    remove(code: number, quantity: number): void{
+        if (!this.items.has(code)){ // recebe o valor da chave(a quantidade no carrinho) 'code'
+            console.log('Código não encontrado!')
+            return
+        } 
+        
+        let item = this.items.get(code);
+        let productQuantity = item?.quantity!;
+        let product = item?.product!;
+
+        if(quantity <= 0){ // valido se é um número negativo
+            console.log('Por favor, passar uma quantidade válida.')
+            return
+        } if(quantity === productQuantity!){ // valido se a quantidade passada é igual a quantidade que já está no carrinho, se sim, exclui do carrinho
+            this.items.delete(code)
+            return
+        } if(quantity < productQuantity!){ // valido se a quantidade passada é menor que a quantidade que já está no carrinho
+            productQuantity! -= quantity;
+            this.items.set(code, {'product': product, 'quantity': productQuantity});
+            return
+        } else {
+            this.items.delete(code)
+        }   
+    }
+    
+    total(): void{
+        if (!this.items.size){
+            console.log('Carrinho vazio')
+            return
         }
-        return totalCart;
+
+        let totalPrice: number = 0;
+        let totalCart: number = 0;
+
+        for(let [code, products] of this.items){
+            totalPrice = products.product.price * products.quantity;
+            totalCart += totalPrice;
+        }
+        console.log(`O valor total do carrinho é: R$${totalCart}.`);
     }
 
+    // summary() {
+    //     const summaryItems = this.items.forEach((item) => ({
+    //         code: item.product.code,
+    //         quantity: item.quantity,
+    //         total: item.product.price * item.quantity
+    //     }));
+    //     return JSON.stringify(summaryItems);
+    //   }
+
+    // summary() {
+    //     let code;
+    //     let quantity;
+    //     let total;
+
+    //     for(let [_, item] of this.items){
+    //         code = item.product.code;
+    //         quantity = item.quantity;
+    //         total = item.product.price * item.quantity
+    //     }
+    //     const summaryItems = {
+    //         code: code,
+    //         quantity: quantity,
+    //         total: total
+    //     }
+    //     return JSON.stringify(summaryItems);
+    // }
+
+        summary() {
+        const summaryItems = Array.from(this.items, ([_, item]) => ({
+            code: item.product.code,
+            quantity: item.quantity,
+            total: item.product.price * item.quantity,
+        }));
+        return JSON.stringify(summaryItems);
+    }
 }
 
 
-const carrinho = new Cart()
-const product1 = new Product(10, 'camiseta', 20, 2);
-const product2 = new Product(102, 'calça', 10, 2);
-const product3 = new Product(24, 'bermuda', 50, 5);
-const product4 = new Product(39, 'bermuda', 10, 5);
-
-carrinho.add(product1);
-carrinho.add(product2);
-carrinho.add(product3);
-carrinho.add(product3);
-carrinho.remove(product3);
-carrinho.add(product4);
-console.log(carrinho.total());
+// Instanciando
+const cart = new Cart();
+const product1 = new Product(111, 'Camiseta', 20);
+const product2 = new Product(222, 'Blusa', 10);
+const product3 = new Product(24, 'Bermuda', 50);
+// const product4 = new Product(39, 'Calça', 10);
 
 
-// carrinho.total();
-// carrinho.add(product1);
-// carrinho.add(product2);
-// carrinho.add(product4);
-// carrinho.add(product5);
-// console.log(carrinho);
-// carrinho.remove(product3)
-// console.log(carrinho);
-// console.log(product1.totalPrice());
-// console.log(product1.totalPrice() + product2.totalPrice());
-// console.log(carrinho.total());
+// Adicionando no carrinho
+cart.add(product1, 5);
+cart.add(product1, 5);
+cart.add(product2, 8);
+cart.add(product3, 4);
+cart.remove(222, 2);
+cart.total();
+console.log(cart.summary());
 
-// console.log(product); // Product { code: 10, name: 'camiseta', price: 20, quantity: 2 }
-// product.totalPrice(); //O valor total do produto é de 40.
+
+// Resultado
+// O valor total do carrinho é: R$260.
+// [{"code":111,"quantity":10,"total":200},{"code":222,"quantity":6,"total":60}]

@@ -9,4 +9,6 @@ function arrayNumbersFor(array: number[] = []){
     console.log(min);
 }
 
-arrayNumbersFor([-1, 7, 4, 5, 8, 3, 40, 4, 0, -3]);
+// arrayNumbersFor([-1, 7, 4, 5, 8, 3, 40, 4, 0, -3]);
+arrayNumbersFor([1, 4, 3, 5]);
+
