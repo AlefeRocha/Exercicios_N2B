@@ -24,3 +24,5 @@ console.log(arrayNumbers([5, 12, 8, 130, 44], 20));
 
 // const arr = [5, 12, 8, 130, 44];
 // console.log(arr.includes(8));
+
+// NÃO FINALIZADO

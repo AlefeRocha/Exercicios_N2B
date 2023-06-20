@@ -24,6 +24,8 @@ class Person{
     }
 }
 
+
+// Instanciando
 let pessoa1 = new Person('Alefe', 31);
 let pessoa2 = new Person('Maria', 28);
 let pessoa3 = new Person('Stella', 26);
@@ -35,10 +37,13 @@ pessoa1.addFriend(pessoa3);
 pessoa1.addFriend(pessoa4);
 pessoa1.addFriend(pessoa5);
 
+
+// Log
 console.log(pessoa1.getFriends());
 console.log(pessoa2.getFriends());
 
-// result console.log(pessoa1.getFriends());
+
+// Resultado
 // [
 // Person { name: 'Marcos', age: 42, friendList: [] },
 // Person { name: 'Marcos', age: 30, friendList: [] },
@@ -46,5 +51,4 @@ console.log(pessoa2.getFriends());
 // Person { name: 'Stella', age: 26, friendList: [] }
 // ]
 
-// result console.log(pessoa2.getFriends());
 // Lista de amigos está vazia.
