@@ -17,7 +17,6 @@ class Cart{
     items = new Map<number, Item>();
     
     add(product: Product, quantity: number): void{
-        let c = this.items.get(2);
         let added = this.items.get(product.code)
         if(added){
             added.quantity += quantity
@@ -125,19 +124,19 @@ class Cart{
 }
 
 
-
 // Instanciando
 const cart = new Cart();
 const product1 = new Product(111, 'Camiseta', 20);
 const product2 = new Product(222, 'Blusa', 10);
-// const product3 = new Product(24, 'Bermuda', 50, 5);
-// const product4 = new Product(39, 'Calça', 10, 5);
+const product3 = new Product(24, 'Bermuda', 50);
+// const product4 = new Product(39, 'Calça', 10);
 
 
 // Adicionando no carrinho
 cart.add(product1, 5);
 cart.add(product1, 5);
 cart.add(product2, 8);
+cart.add(product3, 4);
 cart.remove(222, 2);
 cart.total();
 console.log(cart.summary());
