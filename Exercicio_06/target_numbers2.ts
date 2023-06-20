@@ -26,8 +26,10 @@ function arrayNumbers(randomArray: Array<number>, targetNumber: number){
 }
 
 // array que quebrava a solução 👇
-console.log(arrayNumbers([5, 4, 7], 12)); // [0, 1]
-console.log(arrayNumbers([4, 5, 7], 12)); // [0, 1]
+console.log(arrayNumbers([5, 5, 7], 10)); // [0, 1]
+console.log(arrayNumbers([5, 4, 7], 12)); // [0, 2]
+console.log(arrayNumbers([4, 5, 7], 12)); // [1, 2]
+
 // console.log(arrayNumbers([5, 5, 8, 130, 44], 10)); // [0, 1]
 // console.log(arrayNumbers([5, 6, 8, 130, 44], 11)); // [0, 1]
 // console.log(arrayNumbers([5, 12, 8, 130, 44], 52)); // [2, 4]

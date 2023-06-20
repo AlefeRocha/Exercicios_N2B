@@ -32,11 +32,15 @@ class Client extends Person{
 }
 
 
+// Instanciando
 const clienteJoao = new Client('João', 30, 'joao@gmail.com', 2525, new Date('2023-05-30'));
 
+
+// Log
 console.log(clienteJoao.dataClient);
 
-// result:
+
+// Resultado
 // {
 //     name: 'João',
 //     age: 30,

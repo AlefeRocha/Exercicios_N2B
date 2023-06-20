@@ -12,3 +12,4 @@ function arrayNumbersFor(array: number[] = []){
 // arrayNumbersFor([-1, 7, 4, 5, 8, 3, 40, 4, 0, -3]);
 arrayNumbersFor([1, 4, 3, 5]);
 
+// NÃO FINALIZADO
