@@ -47,13 +47,11 @@ class Cart{
             return
         }
 
-        let totalPrice: number = 0;
-        let totalCart: number = 0;
+        const totalCart: number = Array.from(this.items.values()).reduce(
+            (acc: number, item: Item) => {
+                return acc + (item.product.price * item.quantity);
+            },0);
 
-        for(let [code, products] of this.items){
-            totalPrice = products.product.price * products.quantity;
-            totalCart += totalPrice;
-        }
         console.log(`O valor total do carrinho é: R$${totalCart}.`);
     }
 
